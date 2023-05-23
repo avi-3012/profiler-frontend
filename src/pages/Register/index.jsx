@@ -8,6 +8,7 @@ const apiUrl = "http://localhost:5000";
 const Register = () => {
   const [pageState, setPageState] = useState("PROFILER");
   const [formState, setFormState] = useState();
+  console.log(formState);
 
   const RegisterForm = () => {
     const [invalidForm, setInvalidForm] = useState("");
