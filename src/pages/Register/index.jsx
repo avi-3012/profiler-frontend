@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 
-const apiUrl = "http://localhost:5000";
+const apiUrl = "http://localhost:8080";
 
 
 
@@ -23,10 +23,10 @@ const Register = () => {
         email !== "" &&
         password.length > 3
       ) {
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-        const response = await fetch(apiUrl + `/users/register`, {
+        // setEmail("");
+        // setPassword("");
+        // setConfirmPassword("");
+        const response = await fetch(apiUrl + `/register`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -36,6 +36,9 @@ const Register = () => {
             password,
           }),
         });
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
         const data = await response.json();
         setPageState("");
         setFormState(<div className="Registering">Registering User...</div>);
@@ -98,7 +101,7 @@ const Register = () => {
     <div className="LoginPageContainer">
       <div className="LoginBox">
         <div className="LoginBoxHeader">{pageState}</div>
-        <RegisterForm/>
+        {formState ? formState : <RegisterForm />}
         <div className="LoginBoxButton" onClick={handleClick}>
           Login
         </div>
