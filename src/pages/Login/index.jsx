@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import './style.css'
 
-const apiUrl = process.env.REACT_APP_URL + `/api`;
+const apiUrl = "http://localhost:8080";
 
 const LoginForm = () => {
     const [invalidForm, setInvalidForm] = useState("");
@@ -11,7 +11,7 @@ const LoginForm = () => {
     async function LoginUser(e) {
       e.preventDefault();
       if (email !== "" && password !== "") {
-        const response = await fetch(apiUrl + `/users/login`, {
+        const response = await fetch(apiUrl + `/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -45,7 +45,7 @@ const LoginForm = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter E-mail"
+          placeholder="Enter Username"
         />
         <input
           type="password"
