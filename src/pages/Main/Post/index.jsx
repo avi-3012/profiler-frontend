@@ -1,7 +1,7 @@
 import React from "react";
 
-const Chat = () => {
-  return <div>Chat</div>;
+const Post = () => {
+  return <div>Post</div>;
 };
 
-export default Chat;
+export default Post;
