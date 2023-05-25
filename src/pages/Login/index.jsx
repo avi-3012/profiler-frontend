@@ -9,6 +9,8 @@ const LoginForm = () => {
   const [invalidForm, setInvalidForm] = useState("");
   const [username, setusername] = useState("");
   const [password, setPassword] = useState("");
+  const [checkboxValue, setCheckboxValue] = useState(false);
+
   async function LoginUser(e) {
     e.preventDefault();
     if (username !== "" && password !== "") {
@@ -24,8 +26,13 @@ const LoginForm = () => {
       });
       const data = await response.json();
       if (data.status === "ok") {
-        localStorage.setItem("token", data.token);
-        window.location.href = "/";
+        if (checkboxValue) {
+          localStorage.setItem("token", data.token);
+          window.location.href = "/";
+        } else {
+          sessionStorage.setItem("token", data.token);
+          window.location.href = "/";
+        }
       } else {
         setInvalidForm("Invalid Credentials");
       }
@@ -54,6 +61,16 @@ const LoginForm = () => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Enter Password"
       />
+      <div className="RememberMe">
+        <div
+          type="checkbox"
+          className="Remember-Checkbox"
+          style={{ backgroundColor: checkboxValue ? "black" : "white" }}
+          onClick={() => setCheckboxValue(!checkboxValue)}
+        />
+        <div>Remember Me</div>
+      </div>
+
       <div className="InvalidForm">{invalidForm}</div>
       <button type="submit">Login</button>
     </form>

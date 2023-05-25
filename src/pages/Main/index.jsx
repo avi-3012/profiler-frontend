@@ -20,38 +20,23 @@ const Main = () => {
   const [mainPage, setmainPage] = React.useState();
 
   React.useEffect(() => {
-    if (localStorage.getItem("token") === null) {
+    if (
+      (localStorage.getItem("token") === null ||
+        localStorage.getItem("token") === undefined ||
+        localStorage.getItem("token") === "") &&
+      (sessionStorage.getItem("token") === null ||
+        sessionStorage.getItem("token") === undefined ||
+        sessionStorage.getItem("token") === "")
+    ) {
       window.location.href = "/login";
     }
-    // function Verification() {
-    //   setTimeout(async () => {
-    //     const response = await fetch(apiUrl + `/verify`, {
-    //       method: "GET",
-    //       headers: {
-    //         "x-access-token": localStorage.getItem("token"),
-    //       },
-    //     });
-    //     if (response) {
-    //       const data = await response.json();
-    //       console.log(data);
-    //       if (data.status === "ok") {
-    //         setloading(false);
-    //         return;
-    //       } else {
-    //         alert("Invalid Token! Please Login Again!");
-    //         window.location.href = "/login";
-    //       }
-    //     } else {
-    //       Verification();
-    //     }
-    //   }, 2000);
-    // }
-    // Verification();
+
     setTimeout(async () => {
       const response = await fetch(apiUrl + `/verify`, {
         method: "GET",
         headers: {
-          "x-access-token": localStorage.getItem("token"),
+          "x-access-token":
+            localStorage.getItem("token") || sessionStorage.getItem("token"),
         },
       });
       const data = await response.json();

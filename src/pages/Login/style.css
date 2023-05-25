@@ -55,12 +55,32 @@
   border-radius: 10px;
   border: 1px solid #ccc;
   text-align: center;
+  margin-top: 5px;
 }
 
 .LoginForm input:focus {
   outline: none;
   border: 1.5px solid #000;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+.Remember-Checkbox {
+  width: 15px;
+  height: 15px;
+  border-radius: 5px;
+  border: 1px solid black;
+  text-align: center;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.RememberMe {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 25px;
+  margin-top: 5px;
+  font-size: 12px;
 }
 
 .LoginForm button {
@@ -178,19 +198,7 @@
   }
 }
 
-/* @media all and (max-height: 550px) {
-    .LoginPageContainer {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-    }
-} */
-
 @media all and (max-height: 550px) {
-  /* .LoginPageContainer {
-        padding-top: 6rem;
-        padding-bottom: 3rem;
-    } */
-
   .LoginBox {
     width: 90vw;
     box-shadow: none;
