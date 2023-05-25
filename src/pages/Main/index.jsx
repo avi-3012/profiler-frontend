@@ -12,7 +12,7 @@ import Post from "./Post";
 import Chat from "./Chat";
 import Profile from "./Profile";
 
-const apiUrl = "http://localhost:8080";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const Main = () => {
   const [loading, setloading] = React.useState(true);
@@ -23,6 +23,30 @@ const Main = () => {
     if (localStorage.getItem("token") === null) {
       window.location.href = "/login";
     }
+    // function Verification() {
+    //   setTimeout(async () => {
+    //     const response = await fetch(apiUrl + `/verify`, {
+    //       method: "GET",
+    //       headers: {
+    //         "x-access-token": localStorage.getItem("token"),
+    //       },
+    //     });
+    //     if (response) {
+    //       const data = await response.json();
+    //       console.log(data);
+    //       if (data.status === "ok") {
+    //         setloading(false);
+    //         return;
+    //       } else {
+    //         alert("Invalid Token! Please Login Again!");
+    //         window.location.href = "/login";
+    //       }
+    //     } else {
+    //       Verification();
+    //     }
+    //   }, 2000);
+    // }
+    // Verification();
     setTimeout(async () => {
       const response = await fetch(apiUrl + `/verify`, {
         method: "GET",

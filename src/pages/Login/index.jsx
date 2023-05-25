@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import "./style.css";
 
-const apiUrl = "http://localhost:8080";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const LoginForm = () => {
   const [invalidForm, setInvalidForm] = useState("");

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const apiUrl = "http://localhost:8080";
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const Register = () => {
   const [pageState, setPageState] = useState("PROFILER");
