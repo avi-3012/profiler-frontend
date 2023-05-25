@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 import { useState, useEffect } from "react";
 
 const apiUrl = "http://localhost:8080";
-
-
 
 const Register = () => {
   const [pageState, setPageState] = useState("PROFILER");
@@ -12,7 +10,7 @@ const Register = () => {
 
   const RegisterForm = () => {
     const [invalidForm, setInvalidForm] = useState("");
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     async function registerUser(e) {
@@ -20,23 +18,20 @@ const Register = () => {
       if (
         password === confirmPassword &&
         password !== "" &&
-        email !== "" &&
+        username !== "" &&
         password.length > 3
       ) {
-        // setEmail("");
-        // setPassword("");
-        // setConfirmPassword("");
         const response = await fetch(apiUrl + `/register`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            email,
+            username,
             password,
           }),
         });
-        setEmail("");
+        setUsername("");
         setPassword("");
         setConfirmPassword("");
         const data = await response.json();
@@ -46,21 +41,23 @@ const Register = () => {
           setFormState(<div className="Registering">User Registered!</div>);
         } else if (data.error.code === 11000) {
           setFormState(
-            <div className="Registering">Email Already Registered!!</div>
+            <div className="Registering">Username Already Registered!!</div>
           );
         } else {
           setFormState(<div className="Registering">Error Occured</div>);
         }
-      } else if (email === "") {
-        setInvalidForm("Please enter an Email!!");
+      } else if (username === "") {
+        setInvalidForm("Please enter a Username!");
       } else if (password === "") {
-        setInvalidForm("Please enter a Password!!");
-      } else if (password.length < 3) {
-        setInvalidForm("Password cannot be smaller than 3 digits!!");
+        setInvalidForm("Please enter a Password!");
+      } else if (username.length < 4) {
+        setInvalidForm("Username cannot be smaller than 4 digits!!");
+      } else if (password.length < 4) {
+        setInvalidForm("Password cannot be smaller than 4 digits!!");
       } else if (confirmPassword === "") {
-        setInvalidForm("Please confirm Password!!");
+        setInvalidForm("Please confirm Password!");
       } else {
-        setInvalidForm("Passwords did not match!!");
+        setInvalidForm("Passwords did not match!");
       }
     }
     useEffect(() => {
@@ -71,9 +68,9 @@ const Register = () => {
     return (
       <form className="RegisterForm" onSubmit={(e) => registerUser(e)}>
         <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          type="text"
           placeholder="Enter Username"
         />
         <input
@@ -96,7 +93,7 @@ const Register = () => {
 
   const handleClick = () => {
     window.location.href = "/login";
-  }
+  };
   return (
     <div className="LoginPageContainer">
       <div className="LoginBox">
@@ -107,7 +104,7 @@ const Register = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

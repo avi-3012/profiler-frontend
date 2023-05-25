@@ -12,21 +12,34 @@ import Post from "./Post";
 import Chat from "./Chat";
 import Profile from "./Profile";
 
+const apiUrl = "http://localhost:8080";
+
 const Main = () => {
-  const [update, setupdate] = React.useState(0);
   const [loading, setloading] = React.useState(true);
   const [mainState, setmainState] = React.useState(1);
   const [mainPage, setmainPage] = React.useState();
 
   React.useEffect(() => {
-    if (update === 1) {
-      setloading(false);
+    if (localStorage.getItem("token") === null) {
+      window.location.href = "/login";
     }
-  }, [update]);
-
-  setTimeout(() => {
-    setupdate(1);
-  }, 8000);
+    setTimeout(async () => {
+      const response = await fetch(apiUrl + `/verify`, {
+        method: "GET",
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+      if (data.status === "ok") {
+        setloading(false);
+      } else {
+        alert("Invalid Token! Please Login Again!");
+        window.location.href = "/login";
+      }
+    }, 2000);
+  }, []);
 
   React.useEffect(() => {
     if (mainState === 1) {
@@ -51,7 +64,7 @@ const Main = () => {
       <div className="main">
         {loading ? (
           <div>
-            <Loading setupdate={setupdate} />
+            <Loading />
           </div>
         ) : (
           <div className="main-container">

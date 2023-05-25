@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./style.css";
 
-const Loading = ({ setupdate }) => {
+const Loading = () => {
   const [size1] = React.useState("8px");
   const [size2] = React.useState("32px");
   const [size3] = React.useState("8px");
