@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import "./style.css";
 
 const Navigation = ({ setmainState }) => {
@@ -19,7 +20,15 @@ const Navigation = ({ setmainState }) => {
   };
 
   return (
-    <div className="navigation">
+    <motion.div
+      className="navigation"
+      animate={{
+        y: [-50, 0],
+      }}
+      transition={{
+        duration: 0.5,
+      }}
+    >
       <div className="nav-home nav-item" onClick={() => navhome()}>
         <div className="nav-home-icon"></div>
       </div>
@@ -35,7 +44,7 @@ const Navigation = ({ setmainState }) => {
       <div className="nav-profile nav-item" onClick={() => navprofile()}>
         <div className="nav-profile-icon"></div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
