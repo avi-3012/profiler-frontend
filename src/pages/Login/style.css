@@ -174,6 +174,8 @@
 }
 
 .InvalidForm {
+  position: absolute;
+  padding-top: 70px;
   font-size: 10px;
   color: red;
 }

@@ -30,24 +30,64 @@ const Main = () => {
     ) {
       window.location.href = "/login";
     }
-
-    setTimeout(async () => {
-      const response = await fetch(apiUrl + `/verify`, {
-        method: "GET",
-        headers: {
-          "x-access-token":
-            localStorage.getItem("token") || sessionStorage.getItem("token"),
-        },
-      });
-      const data = await response.json();
-      console.log(data);
-      if (data.status === "ok") {
-        setloading(false);
-      } else {
-        alert("Invalid Token! Please Login Again!");
-        window.location.href = "/login";
-      }
-    }, 2000);
+    try {
+      setTimeout(async () => {
+        try {
+          const response = await fetch(apiUrl + `/verify`, {
+            method: "GET",
+            headers: {
+              "x-access-token":
+                localStorage.getItem("token") ||
+                sessionStorage.getItem("token"),
+            },
+          });
+          const data = await response.json();
+          console.log(data);
+          if (data.timesloggedin < 2) {
+            window.location.href = "/createprofile";
+          }
+          setTimeout(() => {
+            if (data.status === "ok") {
+              setloading(false);
+            } else {
+              alert("Invalid Token! Please Login Again!");
+              localStorage.removeItem("token");
+              sessionStorage.removeItem("token");
+              window.location.href = "/login";
+            }
+          }, 1000);
+        } catch (error) {
+          alert("Server Error! Please Try Again Later!");
+          console.log(error);
+        }
+      }, 1000);
+    } catch (error) {
+      console.log(error);
+    }
+    // setTimeout(async () => {
+    //   const response = await fetch(apiUrl + `/verify`, {
+    //     method: "GET",
+    //     headers: {
+    //       "x-access-token":
+    //         localStorage.getItem("token") || sessionStorage.getItem("token"),
+    //     },
+    //   });
+    //   const data = await response.json();
+    //   console.log(data);
+    //   if (data.timesloggedin < 2) {
+    //     window.location.href = "/createprofile";
+    //   }
+    //   setTimeout(() => {
+    //     if (data.status === "ok") {
+    //       setloading(false);
+    //     } else {
+    //       alert("Invalid Token! Please Login Again!");
+    //       localStorage.removeItem("token");
+    //       sessionStorage.removeItem("token");
+    //       window.location.href = "/login";
+    //     }
+    //   }, 1000);
+    // }, 1000);
   }, []);
 
   React.useEffect(() => {

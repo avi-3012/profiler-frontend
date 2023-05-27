@@ -11,36 +11,85 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [checkboxValue, setCheckboxValue] = useState(false);
 
-  async function LoginUser(e) {
-    e.preventDefault();
-    if (username !== "" && password !== "") {
-      const response = await fetch(apiUrl + `/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      });
-      const data = await response.json();
-      if (data.status === "ok") {
-        if (checkboxValue) {
-          localStorage.setItem("token", data.token);
-          window.location.href = "/";
-        } else {
-          sessionStorage.setItem("token", data.token);
-          window.location.href = "/";
-        }
-      } else {
-        setInvalidForm("Invalid Credentials");
-      }
-    } else if (username === "") {
-      setInvalidForm("Please enter an username!!");
-    } else if (password === "") {
-      setInvalidForm("Please enter a Password!!");
+  useEffect(() => {
+    if (
+      (localStorage.getItem("token") !== null &&
+        localStorage.getItem("token") !== undefined &&
+        localStorage.getItem("token") !== "") ||
+      (sessionStorage.getItem("token") !== null &&
+        sessionStorage.getItem("token") !== undefined &&
+        sessionStorage.getItem("token") !== "")
+    ) {
+      window.location.href = "/";
     }
+  }, []);
+
+  async function LoginUser(e) {
+    try {
+      e.preventDefault();
+      if (username !== "" && password !== "") {
+        const response = await fetch(apiUrl + `/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        });
+        const data = await response.json();
+        if (data.status === "ok") {
+          if (checkboxValue) {
+            localStorage.setItem("token", data.token);
+            window.location.href = "/";
+          } else {
+            localStorage.removeItem("token");
+            sessionStorage.setItem("token", data.token);
+            window.location.href = "/";
+          }
+        } else {
+          setInvalidForm("Invalid Credentials");
+        }
+      } else if (username === "") {
+        setInvalidForm("Please enter an username!!");
+      } else if (password === "") {
+        setInvalidForm("Please enter a Password!!");
+      }
+    } catch (error) {
+      setInvalidForm("Error Occured");
+      console.log(error);
+    }
+
+    // e.preventDefault();
+    // if (username !== "" && password !== "") {
+    //   const response = await fetch(apiUrl + `/login`, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       username,
+    //       password,
+    //     }),
+    //   });
+    //   const data = await response.json();
+    //   if (data.status === "ok") {
+    //     if (checkboxValue) {
+    //       localStorage.setItem("token", data.token);
+    //       window.location.href = "/";
+    //     } else {
+    //       sessionStorage.setItem("token", data.token);
+    //       window.location.href = "/";
+    //     }
+    //   } else {
+    //     setInvalidForm("Invalid Credentials");
+    //   }
+    // } else if (username === "") {
+    //   setInvalidForm("Please enter an username!!");
+    // } else if (password === "") {
+    //   setInvalidForm("Please enter a Password!!");
+    // }
   }
   useEffect(() => {
     setTimeout(() => {
