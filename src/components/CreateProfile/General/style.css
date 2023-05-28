@@ -27,14 +27,6 @@
   display: none;
 }
 
-.createprofile-general-body-left {
-  display: flex;
-  flex-direction: column;
-  width: 100px;
-  height: 800px;
-  box-sizing: border-box;
-}
-
 .createprofile-general-header-icon {
   width: 50px;
   height: 50px;
@@ -52,7 +44,7 @@
 
 .createprofile-general-body-question {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 300;
   margin-bottom: 10px;
 }
 
@@ -68,6 +60,8 @@
 
 .question {
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
 }
 
 .createprofile-general-body-choices {
@@ -123,4 +117,11 @@
   margin-bottom: 10px;
   background-color: #000000;
   color: #ffffff;
+}
+.createprofile-general-body-checkbox {
+  height: 15px;
+  width: 15px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  margin-right: 10px;
 }
