@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import { motion, AnimatePresence } from "framer-motion";
 
 //
 import General from "../../components/CreateProfile/General/index.jsx";
@@ -15,13 +16,13 @@ import Favourites from "../../components/CreateProfile/Favourites/index.jsx";
 import Lifestyle from "../../components/CreateProfile/Lifestyle/index.jsx";
 
 const CreateProfile = () => {
-  const [titleState, setTitleState] = React.useState("");
+  const [titleState, setTitleState] = React.useState("General");
   const [pageState, setPageState] = React.useState();
 
   React.useEffect(() => {
     switch (titleState) {
       case "General":
-        setPageState(<General />);
+        setPageState(<General titleState={titleState} />);
         break;
       case "Location":
         setPageState(<Location />);
@@ -91,7 +92,19 @@ const CreateProfile = () => {
   return (
     <div className="main-createprofile">
       <div className="createprofile-mainDiv">
-        {pageState}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={titleState}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            style={{ height: "100%", display: "flex", flexDirection: "column" }}
+          >
+            {pageState}
+          </motion.div>
+        </AnimatePresence>
+        {/* {pageState} */}
         <div className="createprofile-buttons">
           <button
             className="createprofile-backbutton createprofile-button"

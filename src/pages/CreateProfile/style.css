@@ -14,6 +14,7 @@
   background-size: 333% 100%;
   background-position: 0% 100%;
   animation: gradient 8s linear infinite;
+  overflow: hidden;
 }
 
 .createprofile-mainDiv {
@@ -22,14 +23,14 @@
   box-sizing: border-box;
   height: 100%;
   width: 1000px;
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
     rgba(236, 236, 255, 0) 0%,
     rgba(255, 255, 255, 1) 25%,
     rgba(255, 255, 255, 1) 40%,
     rgba(236, 236, 255, 0) 100%
-  );
-  /* background-color: black; */
+  ); */
+  background-color: transparent;
   padding-left: 200px;
 }
 
@@ -40,7 +41,6 @@
   /* justify-content: space-evenly; */
   align-items: center;
   height: 100px;
-  width: 100%;
   /* background-color: black; */
 }
 

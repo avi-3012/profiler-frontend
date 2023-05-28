@@ -1,4 +1,4 @@
-.createprofile-general-header {
+.createprofile-location-header {
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
@@ -8,7 +8,7 @@
   padding-bottom: 10px;
 }
 
-.createprofile-general-body {
+.createprofile-location-body {
   padding-top: 50px;
   padding-bottom: 50px;
   margin-bottom: 100px;
@@ -21,7 +21,7 @@
   width: 500px;
 }
 
-.createprofile-general-body-left {
+.createprofile-location-body-left {
   display: flex;
   flex-direction: column;
   width: 100px;
@@ -29,28 +29,28 @@
   box-sizing: border-box;
 }
 
-.createprofile-general-header-icon {
+.createprofile-location-header-icon {
   width: 50px;
   height: 50px;
-  background-image: url("../../../assets/icons/profile.png");
+  background-image: url("../../../assets/icons/CreateProfile/location.png");
   background-size: cover;
   background-position: center;
 }
 
-.createprofile-general-header-title {
+.createprofile-location-header-title {
   height: 50px;
   font-size: 40px;
   font-weight: bold;
   margin-left: 10px;
 }
 
-.createprofile-general-body-question {
+.createprofile-location-body-question {
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 10px;
 }
 
-.createprofile-general-body-input {
+.createprofile-location-body-input {
   font-size: 16px;
   font-weight: 300;
   margin-bottom: 10px;
@@ -63,14 +63,14 @@
   margin-bottom: 20px;
 }
 
-.createprofile-general-body-choices {
+.createprofile-location-body-choices {
   display: flex;
   flex-direction: row;
   /* justify-content: space-between; */
   width: 100%;
 }
 
-.createprofile-general-body-choice-unchecked {
+.createprofile-location-body-choice-unchecked {
   display: flex;
   font-size: 14px;
   font-weight: 500;
@@ -92,13 +92,13 @@
   background-color: #000000;
   color: #ffffff;
 } */
-.createprofile-general-body-choice-unchecked:hover {
+.createprofile-location-body-choice-unchecked:hover {
   background-color: rgb(100, 100, 100);
   border-color: rgb(100, 100, 100);
   color: white;
 }
 
-.createprofile-general-body-choice-checked {
+.createprofile-location-body-choice-checked {
   display: flex;
   font-size: 14px;
   font-weight: 500;
