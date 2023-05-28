@@ -19,6 +19,12 @@
   border-width: 1px 0px 1px 0px;
   border-style: solid;
   width: 500px;
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.createprofile-location-body::-webkit-scrollbar {
+  display: none;
 }
 
 .createprofile-location-body-left {
@@ -57,6 +63,7 @@
   background-color: transparent;
   border-width: 0px 0px 1px 0px;
   outline: none;
+  border-color: #000000;
 }
 
 .question {
