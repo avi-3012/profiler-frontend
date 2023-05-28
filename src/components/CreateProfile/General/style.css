@@ -45,14 +45,14 @@
 }
 
 .createprofile-general-body-question {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   margin-bottom: 10px;
 }
 
 .createprofile-general-body-input {
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 600;
   margin-bottom: 10px;
   background-color: transparent;
   border-width: 0px 0px 1px 0px;
