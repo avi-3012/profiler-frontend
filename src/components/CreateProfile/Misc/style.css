@@ -1,0 +1,37 @@
+.createprofile-misc {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 20px;
+  width: 20px;
+  background-image: url("../../../assets/icons/CreateProfile/info.png");
+  background-size: cover;
+  background-position: center;
+  z-index: 2;
+}
+
+.createprofile-misc-body {
+  opacity: 0;
+  position: absolute;
+  font: 12px "Roboto", sans-serif;
+  top: 10px;
+  left: -20px;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.createprofile-misc:hover + .createprofile-misc-body {
+  opacity: 1;
+  left: 10px;
+}
+
+.createprofile-misc:hover {
+  background-image: none;
+  width: 200px;
+  height: 200px;
+}

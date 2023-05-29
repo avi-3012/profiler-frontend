@@ -34,9 +34,9 @@ const Location = () => {
 
   React.useEffect(() => {
     if (
-      localStorage.getItem("general") !== null &&
-      localStorage.getItem("general") !== undefined &&
-      localStorage.getItem("general") !== ""
+      localStorage.getItem("location") !== null &&
+      localStorage.getItem("location") !== undefined &&
+      localStorage.getItem("location") !== ""
     ) {
       setLocationState(JSON.parse(localStorage.getItem("location")));
     }
@@ -152,7 +152,7 @@ const Location = () => {
           </div>
           <div className="createprofile-location-body-choices">
             {male ? <Checked value={"Male"} /> : <Unchecked value={"Male"} />}
-            {female ? (
+            {femlocation
               <Checked value={"Female"} />
             ) : (
               <Unchecked value={"Female"} />
