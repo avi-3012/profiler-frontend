@@ -1,5 +1,7 @@
 import React from "react";
 import "./style.css";
+import lockIcon from "../../../assets/icons/CreateProfile/lock.png";
+import unlockIcon from "../../../assets/icons/CreateProfile/unlock.png";
 
 const General = ({ titleState }) => {
   const [male, setMale] = React.useState(false);
@@ -160,7 +162,12 @@ const General = ({ titleState }) => {
           <div
             type="checkbox"
             className="general-a-Checkbox createprofile-general-body-checkbox"
-            style={{ backgroundColor: genAcheckbox ? "black" : "transparent" }}
+            style={{
+              // backgroundColor: genAcheckbox ? "black" : "transparent",
+              backgroundImage: genAcheckbox
+                ? `url(${lockIcon})`
+                : `url(${unlockIcon})`,
+            }}
             onClick={() => {
               setGeneralState({
                 ...generalState,
@@ -191,7 +198,12 @@ const General = ({ titleState }) => {
           <div
             type="checkbox"
             className="general-a-Checkbox createprofile-general-body-checkbox"
-            style={{ backgroundColor: genBcheckbox ? "black" : "transparent" }}
+            style={{
+              // backgroundColor: genBcheckbox ? "black" : "transparent",
+              backgroundImage: genBcheckbox
+                ? `url(${lockIcon})`
+                : `url(${unlockIcon})`,
+            }}
             onClick={() => {
               setGeneralState({
                 ...generalState,
@@ -223,7 +235,12 @@ const General = ({ titleState }) => {
           <div
             type="checkbox"
             className="general-a-Checkbox createprofile-general-body-checkbox"
-            style={{ backgroundColor: genCcheckbox ? "black" : "transparent" }}
+            style={{
+              // backgroundColor: genCcheckbox ? "black" : "transparent",
+              backgroundImage: genCcheckbox
+                ? `url(${lockIcon})`
+                : `url(${unlockIcon})`,
+            }}
             onClick={() => {
               setGeneralState({
                 ...generalState,
@@ -255,7 +272,12 @@ const General = ({ titleState }) => {
           <div
             type="checkbox"
             className="general-a-Checkbox createprofile-general-body-checkbox"
-            style={{ backgroundColor: genDcheckbox ? "black" : "transparent" }}
+            style={{
+              // backgroundColor: genDcheckbox ? "black" : "transparent",
+              backgroundImage: genDcheckbox
+                ? `url(${lockIcon})`
+                : `url(${unlockIcon})`,
+            }}
             onClick={() => {
               setGeneralState({
                 ...generalState,
@@ -287,7 +309,12 @@ const General = ({ titleState }) => {
           <div
             type="checkbox"
             className="general-a-Checkbox createprofile-general-body-checkbox"
-            style={{ backgroundColor: genEcheckbox ? "black" : "transparent" }}
+            style={{
+              // backgroundColor: genEcheckbox ? "black" : "transparent",
+              backgroundImage: genEcheckbox
+                ? `url(${lockIcon})`
+                : `url(${unlockIcon})`,
+            }}
             onClick={() => {
               setGeneralState({
                 ...generalState,

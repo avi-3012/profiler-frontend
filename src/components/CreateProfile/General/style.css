@@ -119,9 +119,11 @@
   color: #ffffff;
 }
 .createprofile-general-body-checkbox {
-  height: 15px;
-  width: 15px;
-  border: 1px solid #000000;
+  height: 20px;
+  width: 20px;
+  /* border: 1px solid #000000; */
   border-radius: 50%;
   margin-right: 10px;
+  background-size: cover;
+  background-position: center;
 }
